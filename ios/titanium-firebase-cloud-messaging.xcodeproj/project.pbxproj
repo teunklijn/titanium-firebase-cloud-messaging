@@ -49,6 +49,7 @@
 		24DE9E1011C5FE74003F90F6 /* FirebaseCloudmessagingModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirebaseCloudmessagingModuleAssets.m; path = Classes/FirebaseCloudmessagingModuleAssets.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* FirebaseCloudmessaging_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirebaseCloudmessaging_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B445F96B24EC2A0700C4795C /* manifest */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = manifest; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libfirebase.cloudmessaging.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libfirebase.cloudmessaging.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB4B81F61F94B34C0034B0F6 /* FirebaseMessaging.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseMessaging.framework; path = platform/FirebaseMessaging.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +109,7 @@
 		32C88DFF0371C24200C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B445F96B24EC2A0700C4795C /* manifest */,
 				AA747D9E0F9514B9006C5449 /* FirebaseCloudmessaging_Prefix.pch */,
 				24DD6D1B1134B66800162E58 /* titanium.xcconfig */,
 			);
