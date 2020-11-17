@@ -65,40 +65,10 @@
   [[FIRMessaging messaging] setAPNSToken:[apnsToken dataUsingEncoding:NSUTF8StringEncoding]];
 }
 
-- (void)setShouldEstablishDirectChannel:(NSNumber *)shouldEstablishDirectChannel
-{
-  DEPRECATED_REMOVED(@"Firebase.CloudMessaging.shouldEstablishDirectChannel (use APNs channel for downstream messaging)", @"3.0.0", @"4.0.0");
-
-  [[FIRMessaging messaging] setShouldEstablishDirectChannel:[TiUtils boolValue:shouldEstablishDirectChannel]];
-}
-
-- (NSNumber *)shouldEstablishDirectChannel
-{
-  DEPRECATED_REMOVED(@"Firebase.CloudMessaging.shouldEstablishDirectChannel (use APNs channel for downstream messaging)", @"3.0.0", @"4.0.0");
-
-  return @([[FIRMessaging messaging] shouldEstablishDirectChannel]);
-}
-
 - (void)appDidReceiveMessage:(id)arguments
 {
   ENSURE_SINGLE_ARG(arguments, NSDictionary);
   [[FIRMessaging messaging] appDidReceiveMessage:arguments];
-}
-
-- (void)sendMessage:(id)arguments
-{
-  DEPRECATED_REMOVED(@"Firebase.CloudMessaging.sendMessage", @"3.0.0", @"4.0.0");
-  ENSURE_SINGLE_ARG(arguments, NSDictionary);
-  
-  NSDictionary *message = [arguments objectForKey:@"message"];
-  NSString *messageID = [arguments objectForKey:@"messageID"];
-  NSString *to = [arguments objectForKey:@"to"];
-  int64_t timeToLive = [(NSNumber *)[arguments objectForKey:@"timeToLive"] unsignedLongLongValue];
-
-  [[FIRMessaging messaging] sendMessage:message
-                                     to:to
-                          withMessageID:messageID
-                             timeToLive:timeToLive];
 }
 
 - (void)subscribeToTopic:(id)topic
@@ -114,13 +84,6 @@
 }
 
 #pragma mark FIRMessaging Delegates
-
-- (void)messaging:(FIRMessaging *)messaging didReceiveMessage:(FIRMessagingRemoteMessage *)remoteMessage
-{
-  if ([self _hasListeners:@"didReceiveMessage"]) {
-    [self fireEvent:@"didReceiveMessage" withObject:@{ @"message": remoteMessage.appData }];
-  }
-}
 
 - (void)messaging:(FIRMessaging *)messaging didReceiveRegistrationToken:(NSString *)fcmToken
 {
