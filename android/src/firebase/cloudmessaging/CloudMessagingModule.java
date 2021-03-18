@@ -22,8 +22,6 @@ import androidx.annotation.NonNull;
 import androidx.preference.PreferenceManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.RemoteMessage;
 import java.util.HashMap;
@@ -105,18 +103,18 @@ public class CloudMessagingModule extends KrollModule
 	@Kroll.method
 	public void registerForPushNotifications()
 	{
-		FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(
-			new OnCompleteListener<InstanceIdResult>() {
+		FirebaseMessaging.getInstance().getToken().addOnCompleteListener(
+			new OnCompleteListener<String>() {
 				@Override
-				public void onComplete(@NonNull Task<InstanceIdResult> task)
+				public void onComplete(@NonNull Task<String> task)
 				{
 					if (!task.isSuccessful()) {
-						Log.w(LCAT, "getInstanceId failed: ", task.getException());
+						Log.w(LCAT, "getToken failed: ", task.getException());
 						return;
 					}
 
 					// Get new Instance ID token
-					fcmToken = task.getResult().getToken();
+					fcmToken = task.getResult();
 					onTokenRefresh(fcmToken);
 				}
 			});

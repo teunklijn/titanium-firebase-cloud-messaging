@@ -26,13 +26,7 @@
 
 - (void)setApnsToken:(NSString *)apnsToken;
 
-- (void)setShouldEstablishDirectChannel:(NSNumber *)shouldEstablishDirectChannel;
-
-- (NSNumber *)shouldEstablishDirectChannel;
-
 - (void)appDidReceiveMessage:(id)arguments;
-
-- (void)sendMessage:(id)arguments;
 
 - (void)subscribeToTopic:(id)topic;
 
